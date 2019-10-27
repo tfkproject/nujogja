@@ -1,0 +1,13 @@
+<ion-header>
+    <ion-navbar color="nu-theme">
+        <ion-title>Detail Berita</ion-title>
+    </ion-navbar>    
+</ion-header>
+
+
+<ion-content padding>
+    <h2 [innerHTML]="post.title"></h2>
+    <img [src]="post.image">
+    <div [innerHTML]="post.content.rendered"></div>
+    <hr>
+</ion-content>

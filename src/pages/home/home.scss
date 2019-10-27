@@ -1,0 +1,29 @@
+page-home, page-category-post, page-search {
+    ion-card {
+        border-radius:8px !important;
+    }
+    ion-slides.slides {
+        height: auto;
+    }
+
+    .fit {
+        object-fit: cover;
+        object-position: center;
+        height: 200px;
+        width: 100%;
+    }
+
+    // ion-note {
+    //     font-size: 12px;
+    //     align-self: flex-start;
+    //     margin-top: 14px;
+    //     position: absolute;
+    //     right: 10px;
+    // }
+
+    ion-item {
+        .label-ios {
+            margin: 25px 8px 20px 0 !important;
+        }
+    }
+}

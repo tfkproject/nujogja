@@ -1,0 +1,75 @@
+<ion-header>
+    <ion-navbar color="nu-theme">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>NU Jogja</ion-title>
+        <ion-buttons end (click)="showSearch()">
+            <button ion-button icon-only>
+                <ion-icon name="search"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <!-- slider -->
+    <ion-slides *ngIf="slides && slides.length" autoplay="3000" loop="true" speed="500" pager>
+            <ion-slide *ngFor="let slide of slides; let i = index" (click)="keDetail(i)">
+                    <ion-card>
+                        <img [src]="slide.image" class="fit">
+                        <ion-card-content>
+                        <b><small [innerHTML]="slide.title"></small></b>
+                        </ion-card-content>
+                    </ion-card>
+                    <br>
+                </ion-slide>
+    </ion-slides>
+    <!-- end slider -->
+    <!-- <ion-list>
+        <ion-item *ngFor="let post of posts; let i = index" text-wrap (click)="toDetail(i)">
+            <ion-thumbnail item-start>
+                <img [lazyLoad]="post.image" [useSrcset]="true">
+            </ion-thumbnail>
+            <h2 [innerHTML]="post.title"></h2>
+            <h2 [innerHTML]="post.excerpt"></h2>
+            <ion-note item-end>{{ post.date | date:'d MMM yyyy HH:mm' }}</ion-note>
+        </ion-item>
+    </ion-list> -->
+
+    <!-- post -->
+    <ion-list>
+        <ion-card *ngFor="let post of posts; let i = index" text-wrap (click)="toDetail(i)">
+  
+            <!-- <img [lazyLoad]="post.image" [useSrcset]="true"> -->
+            <img [src]="post.image">
+  
+            <ion-card-content>
+              <ion-card-title>
+                <h2 [innerHTML]="post.title"></h2>
+              </ion-card-title>
+              <div [innerHTML]="post.excerpt"></div>
+            </ion-card-content>
+  
+            <ion-row no-padding>
+              <ion-col>
+                <button ion-button clear small color="primary" icon-start>
+                  <ion-icon name='book'></ion-icon>
+                  Selengkapnya
+                </button>
+              </ion-col>
+              <ion-col text-right>
+                <button ion-button clear small color="dark" icon-start>
+                  <ion-icon name='calendar'></ion-icon>
+                  {{ post.date | date:'d MMM yyyy HH:mm' }}
+                </button>
+              </ion-col>
+            </ion-row>
+  
+        </ion-card>
+    </ion-list>
+    <!-- end post -->
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="infiniteScroll">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>
